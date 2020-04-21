@@ -1,0 +1,74 @@
+.admin-table{
+    /* border: 2px solid rgb(151, 128, 128); */
+    /* width : calc(65vw); */
+    width: 90%;
+    height: 350px;
+    margin-top: 20px;
+    margin-left: 48px;
+}
+.admin-table thead tr{
+    height: 50px;
+}
+.admin-table tbody{
+    text-align: center;
+}
+.admin-button{
+    display: flex;
+    position: relative;
+    left: calc(50vw - 280px);
+}
+.admin-button > a{
+    margin-right: 10px;
+}
+.admin-delete{
+    border: transparent;
+    border-radius: 3px;
+    height: 30px;
+    width: 80px;
+    color: white;
+    background-color: rgb(104, 9, 9);
+}
+.admin-push{
+    position: fixed;
+    top: 90vh;
+    left: calc(92vw - 75px);
+    border: 1px solid transparent;
+    border-radius: 3px;
+    height: 30px;
+    width: 80px;
+    color: white;
+    background-color: rgb(9, 104, 17);
+}
+.admin-push p{
+    margin-top: 6px;
+    margin-left: 12px;
+}
+.form-admin{
+    position: relative;
+    /* left: calc(50vw - 150px); */
+    /* background-color: teal; */
+    margin-left: 20%;
+    height: 80%;
+    width: 80%;
+}
+.form-admin label{
+    margin-top: 15px;
+    display: block;
+}
+.form-admin input{
+    margin-top: 5px;
+    /* border: transparent; */
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    height: 30px;
+    /* width: 300px; */
+    width: 80%;
+}
+.admin-update{
+    margin-top: 15px;
+    border: transparent;
+    height: 30px;
+    width: 80px;
+    color: white;
+    background-color: rgb(9, 104, 17);
+}

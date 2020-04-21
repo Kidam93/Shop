@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Ajouter</h1>
+    <div class="form-admin">
+        {{ form_start(form) }}
+            {{ form_rest(form) }}
+            <button class="admin-update" type="submit">Ajouter</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="nav">
+        <div class="nav-primary">
+            <div class="ico-primary">
+                <p class="longbarone"></p>
+                <p class="longbartwo"></p>
+                <p class="shortbar"></p>
+            </div>
+            <div class="links">
+                <a href="">Home</a>
+                <a href="">Shop</a>
+                <a href="">Magazine</a>
+            </div>
+        </div>
+        <div class="nav-secondary">
+            <div class="shop">
+                <p><a href="{{ path('admin.disconnected') }}">Deconnexion</a></p>
+                <a href=""><img src="img/CartButton.png"></a>
+                <a href=""><img src="img/CartButtonWhite.png" style="display: none;"></a>
+            </div>
+            <div class="ico-secondary">
+                <p class="longbarone"></p>
+                <p class="longbartwo"></p>
+                <p class="longbartree"></p>
+            </div>
+        </div>
+    </div>
+    <div class="admin-container">
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Titre</th>
+                <th>Prix</th>
+                <th>Quantité</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for article in articles %}
+                <tr>
+                    <td>{{ article.id }}</td>
+                    <td>{{ article.title }}</td>
+                    <td>{{ article.price }}</td>
+                    <td>{{ article.quantity }}</td>
+                    <td>
+                        <div class="admin-button">
+                            <a href="{{ path('admin.show', { id: article.id }) }}">Voir</a>
+                            <a href="{{ path('admin.update', { id: article.id }) }}">Modifier</a>
+                            <form action="{{ path('admin.delete', { id: article.id }) }}" method="post">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button class="admin-delete">Supprimer</button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('admin.new') }}"><div class="admin-push"><p>Ajouter</p></div></a>
+    </div>
+{% endblock %}

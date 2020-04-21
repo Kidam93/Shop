@@ -89,12 +89,13 @@
         </div>
         <!-- <div class="main"> -->
             <!-- for -->
+            {% for article in articles %}
             <div class="card">
-                <img src="img/coobes.png">
+                <img src="img/{{ article.image }}.png">
                 <div class="card-content">
                     <div class="card-content-one">
-                        <p class="title">Coombes</p>
-                        <p class="desc">Lounge</p>
+                        <p class="title">{{ article.title }}</p>
+                        <p class="desc">{{ article.description }}</p>
                         <a href="">
                             <div class="rating">
                                 <img src="img/Star - On.png">
@@ -106,144 +107,13 @@
                         </a>
                     </div>
                     <div class="card-content-two">
-                        <p class="price">$2,600</p>
+                        <p class="price">{{ article.price }}</p>
                         <a href=""><img src="img/Add to Cart Button.png"></a>
                     </div>
                 </div>
             </div>
+            {% endfor %}
             <!-- endfor -->
-            <div class="card">
-                <img src="img/nille.png">
-                <div class="card-content">
-                    <div class="card-content-one">
-                        <p class="title">Nillè</p>
-                        <p class="desc">Armchair</p>
-                        <a href="">
-                            <div class="rating">
-                                <img src="img/Star - On.png">
-                                <img src="img/Star - On.png">
-                                <img src="img/Star - On.png">
-                                <img src="img/Star - On.png">
-                                <img src="img/Star - Off.png">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card-content-two">
-                        <p class="price">$590</p>
-                        <a href=""><img src="img/Add to Cart Button.png"></a>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <img src="img/keeveset.png">
-                <div class="card-content">
-                    <div class="card-content-one">
-                        <p class="title">Coombes</p>
-                        <p class="desc">Lounge</p>
-                        <a href="">
-                            <div class="rating">
-                                <img src="img/Star - On.png">
-                                <img src="img/Star - On.png">
-                                <img src="img/Star - On.png">
-                                <img src="img/Star - On.png">
-                                <img src="img/Star - Off.png">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card-content-two">
-                        <p class="price">$950</p>
-                        <a href=""><img src="img/Add to Cart Button.png"></a>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <img src="img/blanko.png">
-                <div class="card-content">
-                    <div class="card-content-one">
-                        <p class="title">Blanko</p>
-                        <p class="desc">Side table</p>
-                        <a href="">
-                            <div class="rating">
-                                <img src="img/Star - On.png">
-                                <img src="img/Star - On.png">
-                                <img src="img/Star - On.png">
-                                <img src="img/Star - On.png">
-                                <img src="img/Star - Off.png">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card-content-two">
-                        <p class="price">$90</p>
-                        <a href=""><img src="img/Add to Cart Button.png"></a>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <img src="img/momo.png">
-                <div class="card-content">
-                    <div class="card-content-one">
-                        <p class="title">Momo</p>
-                        <p class="desc">Side table</p>
-                        <a href="">
-                            <div class="rating">
-                                <img src="img/Star - On.png">
-                                <img src="img/Star - On.png">
-                                <img src="img/Star - On.png">
-                                <img src="img/Star - On.png">
-                                <img src="img/Star - Off.png">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card-content-two">
-                        <p class="price">$890</p>
-                        <a href=""><img src="img/Add to Cart Button.png"></a>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <img src="img/penemille.png">
-                <div class="card-content">
-                    <div class="card-content-one">
-                        <p class="title">Penemillè</p>
-                        <p class="desc">Chair</p>
-                        <a href="">
-                            <div class="rating">
-                                <img src="img/Star - On.png">
-                                <img src="img/Star - On.png">
-                                <img src="img/Star - On.png">
-                                <img src="img/Star - On.png">
-                                <img src="img/Star - Off.png">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card-content-two">
-                        <p class="price">$120</p>
-                        <a href=""><img src="img/Add to Cart Button.png"></a>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <img src="img/kappu.png">
-                <div class="card-content">
-                    <div class="card-content-one">
-                        <p class="title">Kappu</p>
-                        <p class="desc">Shelves</p>
-                        <a href="">
-                            <div class="rating">
-                                <img src="img/Star - On.png">
-                                <img src="img/Star - On.png">
-                                <img src="img/Star - On.png">
-                                <img src="img/Star - On.png">
-                                <img src="img/Star - Off.png">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card-content-two">
-                        <p class="price">$420</p>
-                        <a href=""><img src="img/Add to Cart Button.png"></a>
-                    </div>
-                </div>
-            </div>
         <!-- </div> -->
         <!--  -->
     </div>
