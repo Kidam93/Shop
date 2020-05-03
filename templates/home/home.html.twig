@@ -32,15 +32,18 @@
     </div>
     <div class="header">
         <div class="header-search">
-            <a href=""><img src="img/Search.png"></a>
+            <form action="{{ path('home') }}" method="POST">
+            {# <a href=""><img src="img/Search.png"></a> #}
+            <button type="submit"><img src="img/Search.png"></button>
             <div class="search-box">
-                <input class="" placeholder="living room">
+                <input class="" placeholder="living room" name="search">
                 <p class="bar-header"></p>
                 <div class="text">
                     <p>Powered by <strong>Sajari.com</strong></p>
                     <img src="img/Sajari Logo.png">
                 </div>
             </div>
+            </form>
         </div>
         <div class="match">
             <div class="match-content">

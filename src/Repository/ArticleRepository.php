@@ -47,4 +47,15 @@ class ArticleRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findSearch(string $search){
+        $rawSql = "SELECT *
+                    FROM article 
+                    WHERE title LIKE '%$search%'
+                    OR description LIKE '%$search%'
+                    OR price = '$search'";
+        $stmt = $this->getEntityManager()->getConnection()->prepare($rawSql);
+        $stmt->execute([$search]);
+        return $stmt->fetchAll();
+    }
 }

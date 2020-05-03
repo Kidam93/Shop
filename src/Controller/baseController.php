@@ -46,8 +46,16 @@ class baseController extends AbstractController{
      * @Route("", name="home")
      */
     public function home(){
-        $articles = $this->articleRepo->findAll();
-        // dd($this->session->get('user_id'));
+        // paginator
+        // $this->articleRepo->findPaginate();
+        // 
+        $search = $this->requestStack->getCurrentRequest()->request->get('search');
+        if(!empty($search)){
+            $articles = $this->articleRepo->findSearch($search);
+            // dd($search, $result);
+        }else{
+            $articles = $this->articleRepo->findAll();
+        }
         return $this->render("home/home.html.twig", [
             'articles' => $articles,
             'id' => $this->session->get('user_id')

@@ -12,6 +12,13 @@ a{
     color: black;
     text-decoration: none;
 }
+button{
+    background-color: transparent;
+    border: none;
+}
+.header-search form{
+    display: inherit;
+}
 .nav{
     display: flex;
     justify-content: space-between;
