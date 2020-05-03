@@ -51,7 +51,7 @@ class adminController extends AbstractController{
             $this->session->set('id', $id);
             return $this->redirectToRoute("admin.index");
         }
-        return $this->render("pages/login.html.twig");
+        return $this->render("admin/login.html.twig");
     }
 
     /**
@@ -70,7 +70,7 @@ class adminController extends AbstractController{
         if($this->session->get('id') === null){
             return $this->redirectToRoute("admin.login");
         }
-        return $this->render("pages/admin.html.twig", [
+        return $this->render("admin/admin.html.twig", [
             'articles' => $articles
         ]);
     }
@@ -83,7 +83,7 @@ class adminController extends AbstractController{
             return $this->redirectToRoute("admin.login");
         }
         $article = $this->articleRepo->find($id);
-        return $this->render("pages/show.html.twig", [
+        return $this->render("admin/show.html.twig", [
             'article' => $article
         ]);
     }
@@ -104,7 +104,7 @@ class adminController extends AbstractController{
             $this->em->flush();
             return $this->redirectToRoute("admin.index");
         }
-        return $this->render("pages/update.html.twig", [
+        return $this->render("admin/update.html.twig", [
             'form' => $form->createView()
         ]);
     }
@@ -138,7 +138,7 @@ class adminController extends AbstractController{
             $this->em->flush();
             return $this->redirectToRoute("admin.index");
         }
-        return $this->render("pages/new.html.twig", [
+        return $this->render("admin/new.html.twig", [
             'form' => $form->createView()
         ]);
     }

@@ -15,7 +15,11 @@
         </div>
         <div class="nav-secondary">
             <div class="shop">
-                <p>Login</p>
+                {% if id != null %}
+                    <p><a href="{{ path('home.disconnected') }}">Disconnected</a></p>
+                {% else %}
+                    <p><a href="{{ path('home.login') }}">Login</a></p>
+                {% endif %}
                 <a href=""><img src="img/CartButton.png"></a>
                 <a href=""><img src="img/CartButtonWhite.png" style="display: none;"></a>
             </div>

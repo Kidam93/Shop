@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <style>
+        a{
+            position: relative;
+            top: -20px;
+            left: calc(85vw - 100px);
+            text-decoration: none;
+            color: black;
+        }
+        .form-admin{
+            margin-top: 50px;
+            position: relative;
+            margin-left: 20%;
+            height: 80%;
+            width: 80%;
+        }
+        .form-admin label{
+            margin-top: 15px;
+            display: block;
+        }
+        .form-admin input{
+            margin-top: 5px;
+            border: 1px solid lightgrey;
+            border-radius: 3px;
+            height: 30px;
+            width: 80%;
+        }
+        .admin-button{
+            margin-top: 15px;
+            border: transparent;
+            height: 30px;
+            width: 100px;
+            color: white;
+            background-color: rgb(9, 104, 17);
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <form action="{{ path('home.subscribe') }}" method="post" class="form-admin">
+        <div class="">
+            <div class="">
+                <label>Votre nom</label>
+                <input type="text" name="lastname">
+            </div>
+            <div class="">
+                <label>Votre prenom</label>
+                <input type="text" name="firstname">
+            </div>
+        </div>
+        <div class="">
+            <label>Username</label>
+            <input type="text" name="username">
+        </div>
+        <div class="">
+            <label>Votre email</label>
+            <input type="text" name="email">
+        </div>
+        <div class="">
+            <label>mot de passe</label>
+            <input type="text" name="password">
+        </div>
+        <div class="">
+            <label>Confirmez mot de passe</label>
+            <input type="text" name="confirmed_password">
+        </div>
+        <button type="submit" class="admin-button">Se connecter</button>
+    </form>
+     <a href="{{ path('home.login') }}">Se connecter</a>
+{% endblock %}
