@@ -32,7 +32,7 @@
     </div>
     <div class="header">
         <div class="header-search">
-            <form action="{{ path('home') }}" method="POST">
+            <form action="{{ path('home.pages', { id: search }) }}" method="POST">
             {# <a href=""><img src="img/Search.png"></a> #}
             <button type="submit"><img src="img/Search.png"></button>
             <div class="search-box">
@@ -124,27 +124,17 @@
         <!-- </div> -->
         <!--  -->
     </div>
+
     <div class="pagination">
-        <div class="num-active">
-            <a href="" class="text">1</a>
-        </div>
+    {% if nbmax != null %}
+        {% for i in 1..nbmax %}
         <div class="num">
-            <a href="" class="text">2</a>
+            <a href="{{ path('home.pages', {id: i}) }}" class="text">{{ i }}</a>
         </div>
-        <div class="num">
-            <a href="" class="text">3</a>
-        </div>
-        <div class="num">
-            <a href="" class="text">4</a>
-        </div>
-        <div class="num">
-            <a href="" class="text">5</a>
-        </div>
-        <div class="num">
-            <a href="" class="text">6</a>
-        </div>
-        <div class="num">
-            <a href="" class="text"><img src="img/Large Arrow - Up.png"></a>
-        </div>
+        {% endfor %}
+    {% else %}
+        <a href="{{ path('home.pages', {id: 1}) }}" class="text">Retour</a>
+    {% endif %}
     </div>
+
 {% endblock %}

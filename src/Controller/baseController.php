@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 
+use Pagerfanta\Pagerfanta;
 use App\Repository\UserRepository;
 use App\Repository\AdminRepository;
 use App\Repository\ArticleRepository;
@@ -8,13 +9,18 @@ use App\Controller\Login\LoginRequest;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Controller\Subscribe\SubscribeBDD;
 use App\Controller\Subscribe\SubmitedValid;
+use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\HttpFoundation\Request;
 use App\Controller\Subscribe\SubscribeRequest;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class baseController extends AbstractController{
+
+    const NB_ART = 3;
 
     private $articleRepo;
 
@@ -41,24 +47,42 @@ class baseController extends AbstractController{
         $this->requestStack = $requestStack;
         $this->session = $session;
     }
-    
+
     /**
      * @Route("", name="home")
      */
     public function home(){
-        // paginator
-        // $this->articleRepo->findPaginate();
-        // 
+        // DEFAULT PAGE
+        $id = 1;
+
+        return $this->redirectToRoute("home.pages", [
+            'id' => $id
+        ]);
+    }
+
+    /**
+     * @Route("/pages-{id}", name="home.pages")
+     */
+    public function homepage($id, PaginatorInterface $paginator, Request $request){
+
+        $all = $this->articleRepo->findAll();
+        $nbPages = ceil(sizeof($all) / self::NB_ART);
         $search = $this->requestStack->getCurrentRequest()->request->get('search');
-        if(!empty($search)){
-            $articles = $this->articleRepo->findSearch($search);
-            // dd($search, $result);
-        }else{
-            $articles = $this->articleRepo->findAll();
+        
+        if(empty($search)){
+            $nbPages = ceil(sizeof($all) / self::NB_ART);
+            $visible = $this->articleRepo->findNbArticles(self::NB_ART, (int)$id);
         }
+        if(!empty($search)){
+            $nbPages = null;
+            $visible = $this->articleRepo->findSearch($search);
+        }
+
         return $this->render("home/home.html.twig", [
-            'articles' => $articles,
-            'id' => $this->session->get('user_id')
+            'articles' => $visible,
+            'id' => $this->session->get('user_id'),
+            'nbmax' => $nbPages,
+            'search' => $id,
         ]);
     }
 

@@ -48,6 +48,14 @@ class ArticleRepository extends ServiceEntityRepository
     }
     */
 
+    public function findMaxResult($max){
+        return $this->createQueryBuilder('a')
+            ->setMaxResults($max)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     public function findSearch(string $search){
         $rawSql = "SELECT *
                     FROM article 
@@ -56,6 +64,16 @@ class ArticleRepository extends ServiceEntityRepository
                     OR price = '$search'";
         $stmt = $this->getEntityManager()->getConnection()->prepare($rawSql);
         $stmt->execute([$search]);
+        return $stmt->fetchAll();
+    }
+
+    public function findNbArticles($nbPages, $nbArticles){
+        $calc = ($nbArticles - 1) * $nbPages;
+        $rawSql = "SELECT *
+                    FROM article
+                    LIMIT $nbPages OFFSET $calc";
+        $stmt = $this->getEntityManager()->getConnection()->prepare($rawSql);
+        $stmt->execute([$nbPages, $nbArticles]);
         return $stmt->fetchAll();
     }
 }
