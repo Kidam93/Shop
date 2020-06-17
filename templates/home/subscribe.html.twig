@@ -2,6 +2,61 @@
 
 {% block stylesheets %}
     <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html{
+            font-family: 'ABeeZee', sans-serif;
+        }
+        body{
+            overflow-x: hidden;
+        }
+        {# nav #}
+        .links{
+            position: relative;
+            top: -15px;
+            right: 35px;
+        }
+        .nav{
+            display: flex;
+            justify-content: space-between;
+        }
+        .ico-primary{
+            background-color: black;
+            height: 60px;
+            width: 60px;
+        }
+        .ico-primary .longbarone{
+            position: relative;
+            top: 15px;
+            left: calc(50% - 12px);
+            background-color: white;
+            border-radius: 1px;
+            height: 5px;
+            width: 24px;
+        }
+        .ico-primary .longbartwo{
+            margin-top: 5px;
+            position: relative;
+            top: 15px;
+            left: calc(50% - 12px);
+            background-color: white;
+            border-radius: 1px;
+            height: 5px;
+            width: 24px;
+        }
+        .ico-primary .shortbar{
+            margin-top: 5px;
+            position: relative;
+            top: 15px;
+            left: calc(50% - 12px);
+            background-color: white;
+            border-radius: 1px;
+            height: 5px;
+            width: 12px;
+        }
+        {# endnav #}
         a{
             position: relative;
             top: -20px;
@@ -35,12 +90,42 @@
             color: white;
             background-color: rgb(9, 104, 17);
         }
+        .bar-header{
+            margin-top: 10px;
+            background-color: black;
+            height: 3px;
+            width: calc(80% + 5px);
+        }
+        .block-name{
+            display: flex;
+        }
+        @media screen and (min-width: 800px){
+            .ico-primary{
+                margin-left: 58px;
+            }
+        }
     </style>
 {% endblock %}
 
 {% block body %}
+    {# nav #}
+    <div class="nav">
+        <div class="nav-primary">
+            <div class="ico-primary">
+                <p class="longbarone"></p>
+                <p class="longbartwo"></p>
+                <p class="shortbar"></p>
+            </div>
+            <div class="links">
+                <a href="{{ path('home') }}">Home</a>
+                <a href="">Shop</a>
+                <a href="">Magazine</a>
+            </div>
+        </div>
+    </div>
+    {# endnav #}
     <form action="{{ path('home.subscribe') }}" method="post" class="form-admin">
-        <div class="">
+        <div class="block-name">
             <div class="">
                 <label>Votre nom</label>
                 <input type="text" name="lastname">
@@ -50,23 +135,28 @@
                 <input type="text" name="firstname">
             </div>
         </div>
+        <p class="bar-header"></p>
         <div class="">
             <label>Username</label>
             <input type="text" name="username">
         </div>
+        <p class="bar-header"></p>
         <div class="">
             <label>Votre email</label>
             <input type="text" name="email">
         </div>
+        <p class="bar-header"></p>
         <div class="">
             <label>mot de passe</label>
             <input type="text" name="password">
         </div>
+        <p class="bar-header"></p>
         <div class="">
             <label>Confirmez mot de passe</label>
             <input type="text" name="confirmed_password">
         </div>
-        <button type="submit" class="admin-button">Se connecter</button>
+        <p class="bar-header"></p>
+        <button type="submit" class="admin-button">S'inscrire</button>
     </form>
      <a href="{{ path('home.login') }}">Se connecter</a>
 {% endblock %}

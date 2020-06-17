@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+
 {% block body %}
     <div class="nav">
         <div class="nav-primary">
@@ -20,7 +21,9 @@
                 {% else %}
                     <p><a href="{{ path('home.login') }}">Login</a></p>
                 {% endif %}
-                <a href=""><img src="img/CartButton.png"></a>
+                {# if #}
+                <a href="{{ path('basket') }}"><img src="img/CartButton.png"></a>
+                {# endif #}
                 <a href=""><img src="img/CartButtonWhite.png" style="display: none;"></a>
             </div>
             <div class="ico-secondary">
@@ -96,6 +99,12 @@
         </div>
         <!-- <div class="main"> -->
             <!-- for -->
+            {% for message in app.flashes('info') %}
+                <div class="flash-info">
+                    <p>{{ message }}</p>
+                </div>
+            {% endfor %}
+            
             {% for article in articles %}
             <div class="card">
                 <img src="img/{{ article.image }}.png">
@@ -115,7 +124,7 @@
                     </div>
                     <div class="card-content-two">
                         <p class="price">{{ article.price }}</p>
-                        <a href=""><img src="img/Add to Cart Button.png"></a>
+                        <a href="{{ path('home.basket', { id: article.id }) }}"><img src="img/Add to Cart Button.png"></a>
                     </div>
                 </div>
             </div>

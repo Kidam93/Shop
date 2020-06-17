@@ -1,0 +1,234 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html{
+            font-family: 'ABeeZee', sans-serif;
+        }
+        body{
+            overflow-x: hidden;
+        }
+        {# nav #}
+        .links{
+            position: relative;
+            top: -15px;
+            right: 35px;
+        }
+        .nav{
+            display: flex;
+            justify-content: space-between;
+        }
+        .ico-primary{
+            background-color: black;
+            height: 60px;
+            width: 60px;
+        }
+        .ico-primary .longbarone{
+            position: relative;
+            top: 15px;
+            left: calc(50% - 12px);
+            background-color: white;
+            border-radius: 1px;
+            height: 5px;
+            width: 24px;
+        }
+        .ico-primary .longbartwo{
+            margin-top: 5px;
+            position: relative;
+            top: 15px;
+            left: calc(50% - 12px);
+            background-color: white;
+            border-radius: 1px;
+            height: 5px;
+            width: 24px;
+        }
+        .ico-primary .shortbar{
+            margin-top: 5px;
+            position: relative;
+            top: 15px;
+            left: calc(50% - 12px);
+            background-color: white;
+            border-radius: 1px;
+            height: 5px;
+            width: 12px;
+        }
+        {# endnav #}
+        a{
+            position: relative;
+            top: -20px;
+            left: calc(85vw - 100px);
+            text-decoration: none;
+            color: black;
+        }
+        .form-admin{
+            margin-top: 50px;
+            position: relative;
+            margin-left: 20%;
+            height: 80%;
+            width: 80%;
+        }
+        .form-admin label{
+            margin-top: 15px;
+            display: block;
+        }
+        .form-admin input{
+            margin-top: 5px;
+            border: 1px solid lightgrey;
+            border-radius: 3px;
+            height: 30px;
+            width: 80%;
+        }
+        .admin-button{
+            margin-top: 15px;
+            border: transparent;
+            height: 30px;
+            width: 100px;
+            color: white;
+            background-color: rgb(9, 104, 17);
+        }
+        .bar-header{
+            margin-top: 10px;
+            background-color: black;
+            height: 3px;
+            width: calc(80% + 5px);
+        }
+        .block-name{
+            display: flex;
+        }
+        .card{
+            margin-top: 50px;
+            position: relative;
+            left: calc(50vw - 150px);
+        }
+        .container{
+            margin-top: 15px;
+        }
+        .card-content-two{
+            margin-top: 5px;
+            width: 300px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .payment{
+            position: relative;
+            left: calc(50vw - 150px);
+            margin-top: 50px;
+            padding: 20px; 
+            color: black;
+            background-color: white;
+            border: 1.5px solid black;
+            height: 150px;
+            width: 300px;
+        } 
+        .payment-box{
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+        }       
+        .delete-links{
+            background-color: black;
+            color: white;
+            height: 100px;
+            width: 100px;
+            position: inherit;
+        }
+        @media screen and (min-width: 800px){
+            .card{
+                position: relative;
+                left: 0px;
+                margin-left: 48px;
+                margin-right: 3%;
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .container{
+                margin-top: 15px;
+                margin-right: 3%;
+            }
+            .ico-primary{
+                margin-left: 58px;
+            }
+            .payment{
+                position: relative;
+                left: 0;
+                margin-left: 3%;
+                margin-top: 50px;
+                color: black;
+                background-color: white;
+                border: 1.5px solid black;
+                height: 150px;
+                width: 87%;           
+            } 
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="nav">
+        <div class="nav-primary">
+            <div class="ico-primary">
+                <p class="longbarone"></p>
+                <p class="longbartwo"></p>
+                <p class="shortbar"></p>
+            </div>
+            <div class="links">
+                <a href="{{ path('home') }}">Home</a>
+                <a href="">Shop</a>
+                <a href="">Magazine</a>
+            </div>
+        </div>
+        <div class="nav-secondary">
+            <div class="shop">
+                {# <p>Login</p> #}
+                <a href=""><img src="img/CartButton.png"></a>
+                <a href=""><img src="img/CartButtonWhite.png" style="display: none;"></a>
+            </div>
+            <div class="ico-secondary">
+                <p class="longbarone"></p>
+                <p class="longbartwo"></p>
+                <p class="longbartree"></p>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        {% for article in articles %}
+        <div class="container">
+            <img src="img/{{ article.image }}.png">
+            <div class="card-content">
+                <div class="card-content-one">
+                    <p class="title">{{ article.title }}</p>
+                    <p class="desc">{{ article.description }}</p>
+                </div>
+                <div class="card-content-two">
+                    <div class="">
+                        <p>Price</p>
+                        <p>QTE</p>
+                    </div>
+                    <div class="text">
+                            <p class="price">{{ article.price }}</p>
+                            <p><strong>{{ article.quantity }}</strong></p>
+                    </div>
+                </div>
+            </div>
+            <a class="delete-links" href="{{ path('basket.delete', { id: article.id }) }}">Supprimer</a>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="payment">
+        <h3>Your Basket</h3>
+        <div class="payment-box">
+            <div class="">
+                <p>QTE total</p>
+                <p>PRICE total</p>
+            </div>
+            <div class="">
+                <p>calc total</p>
+                <p>calc price</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

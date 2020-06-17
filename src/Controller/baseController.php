@@ -1,7 +1,6 @@
 <?php
 namespace App\Controller;
 
-use Pagerfanta\Pagerfanta;
 use App\Repository\UserRepository;
 use App\Repository\AdminRepository;
 use App\Repository\ArticleRepository;
@@ -54,7 +53,7 @@ class baseController extends AbstractController{
     public function home(){
         // DEFAULT PAGE
         $id = 1;
-
+        
         return $this->redirectToRoute("home.pages", [
             'id' => $id
         ]);
@@ -77,7 +76,10 @@ class baseController extends AbstractController{
             $nbPages = null;
             $visible = $this->articleRepo->findSearch($search);
         }
-
+        // VIRTUAL BASKET
+        // session_start();
+        // dd($_SESSION['panier']);
+        // 
         return $this->render("home/home.html.twig", [
             'articles' => $visible,
             'id' => $this->session->get('user_id'),
@@ -179,6 +181,5 @@ class baseController extends AbstractController{
         }else{
             return $this->redirectToRoute("home.subscribe");
         }
-        // dd($id, $token, $user);
     }
 }

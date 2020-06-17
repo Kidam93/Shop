@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="nav">
+        <div class="nav-primary">
+            <div class="ico-primary">
+                <p class="longbarone"></p>
+                <p class="longbartwo"></p>
+                <p class="shortbar"></p>
+            </div>
+            <div class="links">
+                <a href="">Home</a>
+                <a href="">Shop</a>
+                <a href="">Magazine</a>
+            </div>
+        </div>
+        <div class="nav-secondary">
+            <div class="shop">
+                <p>Login</p>
+                <a href=""><img src="img/CartButton.png"></a>
+                <a href=""><img src="img/CartButtonWhite.png" style="display: none;"></a>
+            </div>
+            <div class="ico-secondary">
+                <p class="longbarone"></p>
+                <p class="longbartwo"></p>
+                <p class="longbartree"></p>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <img src="img/{{ article.image }}.png">
+        <div class="card-content">
+            <div class="card-content-one">
+                <p class="title">{{ article.title }}</p>
+                <p class="desc">{{ article.description }}</p>
+                <a href="">
+                    <div class="rating">
+                        <img src="img/Star - On.png">
+                        <img src="img/Star - On.png">
+                        <img src="img/Star - On.png">
+                        <img src="img/Star - On.png">
+                        <img src="img/Star - Off.png">
+                    </div>
+                </a>
+            </div>
+            <div class="card-content-two">
+                <p class="price">{{ article.price }}</p>
+                <a href=""><img src="img/Add to Cart Button.png"></a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
